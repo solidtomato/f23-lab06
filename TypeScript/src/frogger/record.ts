@@ -3,11 +3,14 @@
  *
  * @author Zishen Wen (F22), Deyuan Chen (S22)
  */
+
+import { FroggerID } from "./froggerid"
+
 class Records {
-    private records: string[][];
+    private records: FroggerID[]
 
     constructor() {
-        this.records = [];
+        this.records = []
     }
 
 	/**
@@ -21,19 +24,13 @@ class Records {
      * @param gender      gender of the person
      * @return Return false if the record has existed. Else, return true.
      */
-    public addRecord(firstName: string, lastName: string, phoneNumber: string,
-                             zipCode: string, state: string, gender: string) {
-        for (let row of this.records) {
-            if (row[0] === firstName
-                    && row[1] === lastName
-                    && row[2] === phoneNumber
-                    && row[3] === zipCode
-                    && row[4] === state
-                    && row[5] === gender) {
-                return false;
-            }
+    public addRecord(id: FroggerID) {
+        for (let existingId of this.records) {
+            if (existingId.equals(id)) return false
         }
-        this.records.push([firstName, lastName, phoneNumber, zipCode, state, gender]);
-        return true;
+        this.records.push(id)
+        return true
     }
 }
+
+export { Records }

@@ -13,6 +13,17 @@ class Road {
 	public getOccupied(): boolean[] {
 		return this.occupied;
 	}
+
+	// Moved two methods from Frogger class.
+	public isOccupied(position: number): boolean {
+		return this.occupied[position];
+	}	
+
+	public isValid(position: number): boolean {
+		if (position < 0) return false;
+		return position < this.occupied.length;
+	}
+
 }
 
 export { Road }
